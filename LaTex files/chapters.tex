@@ -1,25 +1,10 @@
 \section{Einleitung}
 \label{s:intro}
 
-Drahtlose Kommunikation ist in der heutigen Zeit kaum mehr wegzudenken. Beinahe jeder Mensch verfügt über ein Smartphone, welches ihn mit Informationen versorgt, welche den Alltag erleichtern sollen. Ohne eine dauerhafte Verbindung mit dem Internet wären viele Menschen verloren und wüssten nicht, was man in der Zeit vor dem Internet gemacht hat.\\
-
-\noindent Vor einigen Jahren kam nun der Begriff der \ac{iot} auf. Es wurden Gerätschaften entwickelt, die den Alltag noch mehr vereinfachen sollten. Darunter befanden sich anfangs noch hauptsächlich Lampen, die man mithilfe des Smartphones an- und ausschalten konnte. Seitdem hat sich allerdings viel getan und es gibt mittlerweile beispielsweise Gesundheitsassistenten, die man im Alltag an der Kleidung trägt und die einem mit Rat und Tat zur Seite stehen. Ein weiterer wichtiger Punkt, der für viele Menschen interessant zu sein scheint, ist die Heimautomatisierung, bei der man das eigene Zuhause mit Intelligenz ausstattet. Dies erreicht man durch Gerätschaften, wie beispielsweise einer automatische Temperaturregelung, die ebenfalls mit dem Smartphone der Hausbesitzer kommuniziert.\\
-
-\noindent Um derartige Geräte benutzen zu können, wurde allerdings eine neue Form der Kommunikationsprotokolle benötigt. Da WLAN sehr energieintensiv ist und Geräte, die ohne dauerhafte Stromversorgung am Körper getragen werden daher zu große Akkus benötigen würden, wurden neue Protokolle entwickelt, die energiearme Kommunikation ermöglichen. Eines von diesen ist \ac{ble}. Dieses wurde von der Bluetooth \ac{sig} entwickelt und leitet sich aus dem herkömmlichen Bluetooth Protokoll ab. Anfangs gab es noch einige Konkurrenten, jedoch konnte sich \ac{ble} langfristig behaupten. Heute führt es den Bereich der \ac{iot} Protokolle an und ist in fast jedem modernen Smartphone integriert.\\
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.75\linewidth]{\figdir/Logo}
-	\caption{Offizielles Logo von \ac{ble} \cite{BLE:WWW}}
-	\label{FIG:logo}
-\end{figure}
-
-\noindent In den folgenden Kapiteln wird erläutert, wie \ac{ble} funktioniert und welche Anwendungen mit diesem Protokoll möglich sind. Abschließend wird ein Vergleich mit anderen \ac{iot} Protokollen getroffen, um den genauen Anwendungsbereich einzugrenzen.\\   
-
 \section{Vorgestellte Technologien}
 \label{s:grundlagen}
 
-Im folgenden Kapitel wird ein Überblick über die zentralsten \ac{ble} Anwendungen gegeben. Zusätzlich wird die Hardwareebene im Bezug auf die derzeitig bekanntesten Hardwarehersteller von \ac{ble} Komponenten und die genutzten Frequenzbereiche näher betrachtet. 
+Im folgenden Kapitel wird einleitend eine kurze Erläuterung über die drei zentralen Begriffe dieser Arbeit gegeben. Besonderer Schwerpunkt ist dabei die Aufschlüsselung der Begriffe und die Erklärung warum Diese in dieser Arbeit einen derartigen Stellenwert besitzen.\\ 
 
 \subsection{IoT}
 \label{ss:grundlagen:beispiele}
@@ -36,7 +21,7 @@ Im folgenden Kapitel wird ein Überblick über die zentralsten \ac{ble} Anwendun
 \section{Allgemeine Funktionsweise Bluetooth Low Energy}
 \label{s:funktionsweise}
 
-Im nachfolgenden Kapitel wird nun auf die Softwareseitigen Aspekte des \ac{ble} Stacks eingegangen. Dabei finden die Architektur und die Kommunikation besondere Beachtung. Zusätzlich wird ein Überblick geboten, welche Möglichkeiten diese Technologie dem Nutzer bietet.\\  
+\noindent Im nachfolgenden Kapitel wird nun ein kurzer Überblick über die Technologie \ac{ble} gegeben. Dabei wird zum einen die Architektur anhand des Protokollstacks und zum anderen die Funktionsweise erläutert.\\   
 
 \subsection{Protokollstack}
 \label{ss:funktionsweise:protokollstack}
@@ -48,11 +33,48 @@ Im nachfolgenden Kapitel wird nun auf die Softwareseitigen Aspekte des \ac{ble} 
 	\label{FIG:protokollstack}
 \end{figure}
 
-\noindent In Abbildung \ref{FIG:protokollstack} ist der Protokollstack von \ac{ble} zu sehen. Dabei sind die drei Ebenen Controller, Host und Application zu erkennen. Auf der untersten Ebene liegt der Controller, in welchem das Physical Layer und das Linked Layer enthalten sind. Zwischen Host und Controller liegt das sogenannte \ac{hci}, welches die Schnittstelle zwischen den beiden Kommunikationspartnern darstellt. Im Host wiederum befinden sich sämtliche Protokolle und Profile, die notwendig sind, um Kommunikation zu ermöglichen. An der Spitze des Protokollstacks befindet sich die Applikation in der die Logik und Nutzerschnittstelle des aktuellen Anwendungsfalls liegt \cite[15]{Townsend14:GSB}. Wie diese einzelnen Komponenten funktionieren und untereinander kommunizieren, ist in den nachfolgenden Abschnitten erläutert.\\  
+\noindent Die Architektur von \ac{ble} lässt sich anhand des Protokollstacks erkennen. in Abbildung \ref{FIG:protokollstack} ist dieser dargestellt. Besonders auffällig ist, dass er in drei Ebenen unterteilt ist. Der "`Controller"' ist dabei der Bereich, welcher am nächsten an der Hardware sitzt. Hier befinden sich die zwei Lagen "`LE Physical"' und "`Link"'.\\
 
+\noindent Diese beiden Protokolle sind in einer Großzahl von Gerätearchitekturen beheimatet. Das Physical Layer ist dafür vorgesehen, digitale Signale (Bitfolgen) in analoge umzuwandeln. Dieser Schritt wird benötigt, um die \ac{ble} Signale für etwaige Empfänger zugänglich zu machen. Natürlich werden im Physical Layer auch empfangene analoge Signale in digitale umgewandelt. Dieser werden dann im Protokollstack nach oben ins Link Layer weitergereicht. Im Fall von \ac{ble} ist die Schnittstelle für das Senden der analogen Signale die Luft. \ac{ble} sendet daher im Frequenzbereich beginnend bei 2,4GHz bis 2,4835GHz \cite[Seite 7]{RAN:Ble}. Diesen Bereich teilt sich das Protokoll mit anderen wie zum Beispiel Wifi. Um Kollisionen zu vermeiden teilt \ac{ble} den Bereich in 40 Kanäle auf und wechselt während der Verbindung in regelmäßigen Abständen oder bei Übertragungsproblemen den Kanal. Dieser Ansatz nennt sich Frequency Hopping Spread Spectrum \cite[Seite 17]{Townsend14:GSB}.\\      
+
+\noindent Das Link Layer unterscheidet sich in seiner Funktionsweise nicht großartig von dem anderer Kommunikationsprotokolle. Hier werden die Nachrichten die für das  Versenden aus den oberen Schichten ankommen in Pakete gepackt und an das Physical Layer weitergereicht. Dieser Prozess ist für ankommende Pakete natürlich vice versa \cite[Seit 194]{Tanenbaum14:CN}.\\
+
+\noindent Im Link Layer von \ac{ble} wird die Paketgröße festgelegt. Diese lässt seit Version 4.2 eine Payload von 251 Byte pro Paket zu \cite{Gupta:WWW}. Zum Vergleich bei WLAN (IEEE 802.11) kann ein Paket bis zu 2312 Byte groß sein \cite{MTU:WWW}. Daraus lässt sich schließen, dass \ac{ble} einen weitaus geringeren Datendurchsatz als WLAN hat. Allerdings liefert \ac{ble} wiederum andere Vorteile. Auf diese wird in Kapitel \ref{s:vergleich} näher eingegangen.\\
+
+\noindent Das Herzstück des \ac{ble} Protokollstacks bilden die beiden Profile \ac{gap} und \ac{gatt}. Diese befinden sich wie in Abbildung \ref{FIG:protokollstack} zu erkennen im Host Bereich der Architektur. Die beiden Protokolle bilden die Schnittstelle zur tatsächlichen Anwendung mit welcher der Nutzer letzten Endes interagiert.\\
+
+\noindent Das \ac{gap} ist dafür vorgesehen sämtliche Parameter der Verbindung zwischen den Geräten zu verwalten. Vom Verbindungsaufbau bis hin zur Kommunikation werden sämtliche Funktionen von diesem Profil bereitgestellt und abgehandelt.\\
+
+\noindent Im Zuge der jeweiligen Konfiguration kann ein Gerät in \ac{ble} eine der folgenden vier Rollen annehmen:
+\begin{itemize}
+	\item{Broadcaster (Keine Verbindung)}
+	\item{Observer (Keine Verbindung)}
+	\item{Central (Verbindung)}
+	\item{Peripheral (Verbindung)}
+\end{itemize}   
+
+\noindent In \ac{ble} ist es nicht festgeschrieben, dass Geräte ein Verbindung eingehen müssen um Informationen zu erhalten. Die Rollen des Broadcasters und Observers sind sogar ausschließlich ohne feste Verbindung zwischen den Geräten vorgesehen. Diese Funktion wird im allgemeinen gerne von \ac{ble} Beacons verwendet.\\
+
+\noindent Ein Gerät welches als Broadcaster definiert ist sendet dauerhaft einen bestimmten Datensatz. Dabei ist zu keinem Zeitpunkt klar, ob Geräte in Reichweite sind, welche den Datensatz empfangen. Ein Gerät welches diese Daten lesen kann muss als Observer konfiguriert sein. Ein solcher scannt die drei Advertisement Kanäle von \ac{ble} dauerhaft nach Broadcastnachrichten. Falls er eine erhält ließt er diese und verwendet sie. Wichtig ist hierbei, dass der Observer keine Antwort auf eine Nachricht sendet.\\  
+
+\noindent Sollte ein Gerät allerdings eine Verbindung eingehen, dann muss dieses als Central konfiguriert sein. Dies ist die gängigste Form des \ac{ble} Gerätes. So ist beispielsweise jedes Smartphone in der Regel als Central konfiguriert und kann Verbindungen zu Peripherals wie zum Beispiel \ac{ble} Kopfhörern aufnehmen. Dabei ist ein Central in der Regel sogar in der Lage mehrere Verbindungen zu selben Zeit einzugehen.\\
+
+\noindent Ein Peripheral wiederum ist das Gegenstück zum Central, welches seine Verbindungsbereitschaft an sämtliche Geräte in Reichweite signalisiert. Im Fall einer aktiven Verbindung übernimmt das Central die Steuerung des Gerätes unter Berücksichtigung des Funktionsumfangs des Peripherals. \cite[Seite 15]{RAN:Ble}\\
+
+\noindent Das \ac{gap} ermöglicht es einem \ac{ble} Gerät zusätzlich seine Sichtbarkeit und Verbindungsbereitschaft gegenüber anderen Geräten über die Advertisement Kanäle mitzuteilen. Dafür wird auf dem Gerät ein Modus eingestellt welcher anschließend an alle Geräte in Reichweite mitgeteilt wird. Ein Modus ist dabei eng mir der Geräterolle verbunden. Ein Gerät kann folgende Modi annehmen \cite[Seite 16]{RAN:Ble}:
+\begin{itemize}
+	\item{Broadcast (Rolle: Broadcaster)}
+	\item{Nicht zu entdecken (Rolle: Peripheral)}
+	\item{Eingeschränkt zu entdecken (Rolle: Peripheral)}
+	\item{Normal zu entdecken (Rolle: Peripheral)}
+	\item{Nicht verbindbar (Rolle: Alle)}
+	\item{Verbindbar (Rolle: Central, Peripheral)}
+\end{itemize}   
 
 \subsection{Kommunikation}
 \label{ss:funktionsweise:kommunkation}
+
+Todo: Rollen Verbindung und Kommunikation
 
 Nachdem in Kapitel \ref{ss:funktionsweise:protokollstack} der allgemeine Aufbau von \ac{ble} erläutert wurde, wird im nachfolgenden Kapitel auf das Kernelement, die tatsächliche Kommunikation zwischen zwei oder mehreren Geräten von \ac{ble} eingegangen. Dabei werden drei Elemente im besonderen betrachtet: die Bekanntmachung, die Verbindung und der Datenaustausch.\\
 
@@ -89,6 +111,9 @@ Das Verbindungsintervall legt die Zeit fest, die zwischen zwei Verbindungsevents
 \end{figure}
 
 \noindent Wenn das Peripheral die Verbindung annimmt, wird diese, wie in Abbildung \ref{FIG:conenv} dargestellt, aufgenommen. Jedes dieser Ereignisse folgt einem bestimmten Ablauf: zuerst überträgt der Master eine Anfrage an den Slave. Dieser empfängt die Anfrage und verarbeitet diese. Anschließend sendet er eine entsprechende Antwort, die der Master empfängt. Wichtig dabei ist, das der Master nicht nur die Verbindung initiiert, sondern auch sämtliche Anfragen. Nachdem das definierte Verbindungsintervall abgelaufen ist, wird das nächste Verbindungsevent gestartet \cite{CON:WWW}.\\       
+
+\subsection{Anwendungsszenarien}
+\label{ss:funktionsweise:anwendungen}
 
 \section{Schnittstellenbeschreibung}
 \label{s:interface} 
