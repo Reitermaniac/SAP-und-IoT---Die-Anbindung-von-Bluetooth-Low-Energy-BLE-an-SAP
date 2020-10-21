@@ -26,9 +26,9 @@ Im folgenden Kapitel wird einleitend eine kurze Erläuterung über die drei zent
 \subsection{Protokollstack}
 \label{ss:funktionsweise:protokollstack}
 
-\begin{figure}[h]
+\begin{figure}[!b]
 	\centering
-	\includegraphics[width=0.9\linewidth]{\figdir/BLE_Protokolstack}
+	\includegraphics[width=0.6\linewidth]{\figdir/BLE_Protokolstack}
 	\caption{\ac{ble} Protokollstack \cite[Seite 16]{Townsend14:GSB}}
 	\label{FIG:protokollstack}
 \end{figure}
@@ -69,17 +69,21 @@ Im folgenden Kapitel wird einleitend eine kurze Erläuterung über die drei zent
 	\item{Verbindbar (Rolle: Central, Peripheral)}
 \end{itemize}   
 
-\noindent Im \ac{gatt} wird definiert, ob es sich bei dem Gerät um einen Client oder Server handelt. Zweiterer verarbeitet die Kommunikationsanfragen des Clients und liefert die gewünschten Antworten oder führt entsprechende Aktionen aus. Der Server ist in der Regel ein Peripheral auf dem Services hinterlegt sind \cite[Seite 30]{Usama17:BBS}. Welche das sind und was für eine Aktion mit diesen verbunden ist wird in der Regel durch die Nutzeranwendung festgelegt. Der Client ist dementsprechend ein Central, welches die gesamte Verbindung steuert.\\    
+\noindent Im \ac{gatt} wird definiert, ob es sich bei dem Gerät um einen Client oder Server handelt. Zweiterer verarbeitet die Kommunikationsanfragen des Clients und liefert die gewünschten Antworten oder führt entsprechende Aktionen aus. Der Server ist in der Regel ein Peripheral auf dem Services hinterlegt sind \cite[Seite 30]{Usama17:BBS}. Welche das sind und was für eine Aktion mit diesen verbunden ist wird in der Regel durch die Nutzeranwendung festgelegt. Der Client ist dementsprechend ein Central, welches die gesamte Verbindung steuert. Jeder Service verfügt über einen \ac{uuid}. Mit diesem kann der Client eine gezielte Anfrage auf den entsprechenden Service tätigen.\\    
 
 \noindent An oberster Stelle des Protokollstacks befindet sich die Nutzeranwendung. Diese ist nach dem entsprechenden Use Case programmiert und variiert von Anwendung zu Anwendung. Ausschließlich der Stack unterhalb ist für alle Applikationen gleich.\\
 
 \subsection{Kommunikation}
 \label{ss:funktionsweise:kommunkation}
 
-Todo: Rollen Verbindung und Kommunikation
+\noindent Nachdem in Kapitel \ref{ss:funktionsweise:protokollstack} der Aufbau von \ac{ble} erläutert wurde, wird nun in dem folgenden Kapitel auf die Anwendung der Technologie eingegangen. Dabei wird besonders auf den Verbindungsaufbau durch das Advertisement und den Nachrichtenaustausch der stehenden Verbindung eingegangen.\\
 
 \subsubsection{Advertisement}
 \label{sss:funktionsweise:advertisement}
+
+Die Advertisement Funktion in \ac{ble} kann für zwei Szenarien verwendet werden. Zum einen die Signalisierung der Verbindungsbereitschaft. Zum anderen den Broadcast von Daten in der Rolle des Broadcasters (vgl. \ref{ss:funktionsweise:protokollstack}).\\
+
+\noindent Von den 40 Kanälen, in die der \ac{ble} Frequenzbereich unterteilt ist, sind 3 für das Advertisement reserviert. Diese befinden sich in den Bereichen 2,402 - 2,404GHz, 2,426 - 2,428Ghz und 2,48 - 2,482GHz. Dabei sind sie mit den Nummern 37 - 39 belegt \cite[Seite 16]{Townsend14:GSB}.\\
 
 \subsubsection{Verbindung}
 \label{sss:funktionsweise:verbindung}   
