@@ -83,10 +83,29 @@ Im folgenden Kapitel wird einleitend eine kurze Erläuterung über die drei zent
 
 Die Advertisement Funktion in \ac{ble} kann für zwei Szenarien verwendet werden. Zum einen die Signalisierung der Verbindungsbereitschaft. Zum anderen den Broadcast von Daten in der Rolle des Broadcasters (vgl. \ref{ss:funktionsweise:protokollstack}).\\
 
-\noindent Von den 40 Kanälen, in die der \ac{ble} Frequenzbereich unterteilt ist, sind 3 für das Advertisement reserviert. Diese befinden sich in den Bereichen 2,402 - 2,404GHz, 2,426 - 2,428Ghz und 2,48 - 2,482GHz. Dabei sind sie mit den Nummern 37 - 39 belegt \cite[Seite 16]{Townsend14:GSB}.\\
+\noindent Von den 40 Kanälen, in die der \ac{ble} Frequenzbereich unterteilt ist (siehe Kapitel \ref{ss:funktionsweise:protokollstack}), sind drei für das Advertisement reserviert. Diese befinden sich in den Bereichen 2,402 - 2,404GHz, 2,426 - 2,428Ghz und 2,48 - 2,482GHz. Dabei sind sie mit den Nummern 37 - 39 belegt \cite[Seite 16]{Townsend14:GSB}.\\
+
+\noindent Eine Advertisement Nachricht beinhaltet weiterhin ein Header Feld, welches die Paketadressierung regelt. So kann ein Gerät eine der folgenden vier Advertisement Nachrichten an Geräte in Sendereichweite senden \cite[Seite 22]{Townsend14:GSB}:
+\begin{itemize}
+	\item{ADV\_IND: Allgemeine Mitteilung der Verbindungsbereitschaft}
+	\item{ADV\_DIRECT\_IND: Zielgerichtete Mitteilung der Verbindungsbereitschaft}
+	\item{ADV\_SCAN\_IND: Allgemeine Mitteilung der Anwesenheit des Gerätes}
+	\item{ADV\_NONCONN\_IND: Allgemeine Mitteilung der Verbindungsunverfügbarkeit}
+\end{itemize} 
 
 \subsubsection{Verbindung}
 \label{sss:funktionsweise:verbindung}   
+
+\begin{figure}[!b]
+	\centering
+	\includegraphics[width=0.8\linewidth]{\figdir/ConEv}
+	\caption{Zeitlicher Ablauf einer \ac{ble} Verbindung \cite[Seite 22]{Townsend14:GSB}}
+	\label{FIG:ConEv}
+\end{figure}
+
+Ein Verbindung in \ac{ble} besteht aus einer Reihe sogenannter Verbindungsevents. Ein solches wird über drei Parameter definiert welche in den anfänglichen Advertisement Nachrichten vereinbart werden. In Abbildung \ref{FIG:ConEv} ist zu erkennen, wie eine \ac{ble} Verbindung, in zeitlicher Abfolge, abläuft.\\
+
+
 
 \subsection{Anwendungsszenarien}
 \label{ss:funktionsweise:anwendungen}
