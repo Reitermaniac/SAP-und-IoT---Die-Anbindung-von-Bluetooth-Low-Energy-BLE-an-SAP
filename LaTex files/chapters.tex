@@ -78,10 +78,7 @@ Im folgenden Kapitel wird einleitend eine kurze Erläuterung über die drei zent
 
 \noindent Nachdem in Kapitel \ref{ss:funktionsweise:protokollstack} der Aufbau von \ac{ble} erläutert wurde, wird nun in dem folgenden Kapitel auf die Anwendung der Technologie eingegangen. Dabei wird besonders auf den Verbindungsaufbau durch das Advertisement und den Nachrichtenaustausch der stehenden Verbindung eingegangen.\\
 
-\subsubsection{Advertisement}
-\label{sss:funktionsweise:advertisement}
-
-Die Advertisement Funktion in \ac{ble} kann für zwei Szenarien verwendet werden. Zum einen die Signalisierung der Verbindungsbereitschaft. Zum anderen den Broadcast von Daten in der Rolle des Broadcasters (vgl. \ref{ss:funktionsweise:protokollstack}).\\
+\noindent Die Advertisement Funktion in \ac{ble} kann für zwei Szenarien verwendet werden. Zum einen die Signalisierung der Verbindungsbereitschaft. Zum anderen den Broadcast von Daten in der Rolle des Broadcasters (vgl. \ref{ss:funktionsweise:protokollstack}).\\
 
 \noindent Von den 40 Kanälen, in die der \ac{ble} Frequenzbereich unterteilt ist (siehe Kapitel \ref{ss:funktionsweise:protokollstack}), sind drei für das Advertisement reserviert. Diese befinden sich in den Bereichen 2,402 - 2,404GHz, 2,426 - 2,428Ghz und 2,48 - 2,482GHz. Dabei sind sie mit den Nummern 37 - 39 belegt \cite[Seite 16]{Townsend14:GSB}.\\
 
@@ -93,9 +90,6 @@ Die Advertisement Funktion in \ac{ble} kann für zwei Szenarien verwendet werden
 	\item{ADV\_NONCONN\_IND: Allgemeine Mitteilung der Verbindungsunverfügbarkeit}
 \end{itemize} 
 
-\subsubsection{Verbindung}
-\label{sss:funktionsweise:verbindung}   
-
 \begin{figure}[!b]
 	\centering
 	\includegraphics[width=0.8\linewidth]{\figdir/ConEv}
@@ -103,12 +97,18 @@ Die Advertisement Funktion in \ac{ble} kann für zwei Szenarien verwendet werden
 	\label{FIG:ConEv}
 \end{figure}
 
-Ein Verbindung in \ac{ble} besteht aus einer Reihe sogenannter Verbindungsevents. Ein solches wird über drei Parameter definiert welche in den anfänglichen Advertisement Nachrichten vereinbart werden. In Abbildung \ref{FIG:ConEv} ist zu erkennen, wie eine \ac{ble} Verbindung, in zeitlicher Abfolge, abläuft.\\
+\noindent Eine Verbindung in \ac{ble} besteht aus einer Reihe sogenannter Verbindungsevents. Ein solches wird über drei Parameter definiert welche in den anfänglichen Advertisement Nachrichten vereinbart werden. In Abbildung \ref{FIG:ConEv} ist zu erkennen, wie eine \ac{ble} Verbindung, in zeitlicher Abfolge, abläuft.\\
 
+\noindent Der erste Parameter ist das Verbindungsintervall. Wie aus Abbildung \ref{FIG:ConEv} hervorgeht ist eine Verbindung in derartige Verbindunsintervalle unterteilt. Diese legen die Zeit zwischen den Verbindunsereignissen fest. Dabei sind Werte zwischen 7,5ms und 4s möglich. Kürzere Intervalle bedeuten allerdings einen höheren Energieverbrauch. Ein Verbindungsereignis liegt im Intervall und kann somit maximal so lange wie dieses dauern. Die anderen beiden Parameter legen fest, wann eine Verbindung abbricht, beziehungsweise beendet wird.\\ 
 
+\noindent \ac{ble} ist in seiner Rolle als energiesparsames \ac{iot} Protokoll darum bemüht die als Peripheral eingesetzten Server möglichst Energieeffizient zu betreiben. Daher kann ein derartiges Gerät mehrere Verbindungsevents aussetzen, wenn derzeitig keine Daten zu senden oder empfangen sind. Der Parameter "`Slave Latency"' legt dabei die Anzahl der überspringbaren Ereignisse fest.\\
+
+\noindent Den Zeitpunkt ab welchem eine Verbindung für Beendet erklärt wird, legt der Parameter "`Connection Supervision Timeout"' fest. Dieser legt den Zeitraum fest, der zwischen dem Austausch zweier Datenpakete verstreichen darf. Bei Überschreitung dieses Wertes wird die Verbindung aufgelöst \cite[Seite 22f]{Townsend14:GSB}.\\
 
 \subsection{Anwendungsszenarien}
 \label{ss:funktionsweise:anwendungen}
+
+\noindent 
 
 \section{Schnittstellenbeschreibung}
 \label{s:interface} 
