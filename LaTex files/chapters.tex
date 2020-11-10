@@ -13,7 +13,7 @@ Im folgenden Kapitel wird einleitend eine kurze Erläuterung über die drei zent
 
 \noindent Eine allgemeine Definition des Begriffes \ac{iot} lässt sich schwer finden. Jedoch ist es gängig zu definieren, dass ein \ac{iot} den Zusammenschluss physischer Komponenten mit deren digitalen Abbildern im Internet darstellt. Deshalb spricht man im Zusammenhang mit \ac{iot} in der Regel von dem Zusammenschluss verteilter Geräte wie Sensoren oder Steuerungen, welche zentral in einer Anwendung überwacht, beziehungsweise gesteuert werden \cite[Seite 33]{Holtschulte20:IOS}. Einen Großteil des \ac{iot} Sektors nimmt dabei die \ac{m2m} ein. Bei dieser werden Maschinen, Fahrzeuge und viele weiter Komponenten derart konfiguriert, dass sie automatisch miteinander Kommunizieren. Das resultiert in autonomem Fahren oder anderen für den Menschen nützlichen Möglichkeiten \cite[Seite 449]{Holtschulte20:IOS}.\\
 
-\noindent Der vermehrte Einsatz von \ac{iot} in der Industrie hat zur Einführung des Begriffes Industrial \ac{iot} geführt. Dieser wird auch als Industrie 4.0 bezeichnet. Er steht für die Weiterentwicklung die \ac{iot} in der industriellen Fertigung ermöglicht hat. Das letztliche Ziel welches mit dem Begriff Industrie 4.0 beschrieben wird ist eine vollständig autonome Fabrikation und Wertschöpfungskette. Dies soll mit Hilfe von einem oder mehreren \ac{cps} erreicht werden. Der Begriff \ac{cps} steht dabei für ein physisches Gerät, welches ein eingebettetes System und diverse Sensoren und Aktoren enthält. Das eingebettete System steuert dieses und kommuniziert mit anderen \ac{cps} \cite[Seite 30f]{Schell17:INS}.\\
+\noindent Der vermehrte Einsatz von \ac{iot} in der Industrie hat zur Einführung des Begriffes Industrial \ac{iot} geführt. Dieser wird auch als Industrie 4.0 bezeichnet. Er steht für die Weiterentwicklung die \ac{iot} in der industriellen Fertigung ermöglicht hat. Das letztliche Ziel welches mit dem Begriff Industrie 4.0 beschrieben wird ist eine vollständig autonome Fabrikation und Wertschöpfungskette. Dies soll mit Hilfe von einem oder mehreren \ac{cps} erreicht werden. Der Begriff \ac{cps} steht dabei für ein physisches Gerät, welches ein eingebettetes System und diverse Sensoren sowie Aktoren enthält. Das eingebettete System steuert dieses und kommuniziert mit anderen \ac{cps} \cite[Seite 30f]{Schell17:INS}.\\
 
 \subsection{SAP und Internet of Things}
 \label{ss:grundlagen:sap}
@@ -43,9 +43,9 @@ Im folgenden Kapitel wird einleitend eine kurze Erläuterung über die drei zent
 
 \noindent Die Architektur von \ac{ble} geht aus dem Protokollstack hervor. Dieser ist in Abbildung \ref{FIG:protokollstack} dargestellt. Besonders auffällig ist die Untergliederung in drei Ebenen. Der "`Controller"' stellt dabei den hardwarenähesten Bereich dar. Hier befinden sich die zwei Layer "`LE Physical"' und "`Link"'.\\
 
-\noindent Diese beiden Protokolle sind in einer Großzahl von Gerätearchitekturen beheimatet. Das Physical Layer ist dafür vorgesehen, digitale Signale (Bitfolgen) in analoge umzuwandeln. Dieser Schritt wird benötigt, um die \ac{ble} Signale für etwaige Empfänger zugänglich zu machen. Natürlich werden im Physical Layer auch empfangene analoge Signale in digitale umgewandelt. Dieser werden dann im Protokollstack nach oben ins Link Layer weitergereicht. Im Fall von \ac{ble} ist die Schnittstelle für das Senden der analogen Signale die Luft. \ac{ble} sendet daher im Frequenzbereich 2,4GHz bis 2,4835GHz. Diesen Bereich teilt sich das Protokoll mit anderen wie beispielsweise Wifi. Um Kollisionen zu vermeiden teilt \ac{ble} den Bereich in 40 Kanäle auf und wechselt während der Verbindung in regelmäßigen Abständen oder bei Übertragungsproblemen den Kanal. Dieser Ansatz nennt sich Frequency Hopping Spread Spectrum \cite[Seite 16f]{Townsend14:GSB}.\\      
+\noindent Diese beiden Protokolle sind in einer Großzahl von Gerätearchitekturen beheimatet. Das Physical Layer ist dafür vorgesehen, digitale Signale (Bitfolgen) in analoge umzuwandeln. Dieser Schritt wird benötigt, um die \ac{ble} Signale für etwaige Empfänger zugänglich zu machen. Natürlich werden im Physical Layer auch empfangene analoge Signale in digitale umgewandelt. Dieser werden dann im Protokollstack nach oben ins Link Layer weitergereicht. Im Fall von \ac{ble} ist die Schnittstelle für das Senden der analogen Signale die Luft. \ac{ble} sendet dafür im Frequenzbereich 2,4GHz bis 2,4835GHz. Diesen Bereich teilt sich das Protokoll mit anderen Technologien wie beispielsweise Wifi. Um Kollisionen zu vermeiden teilt \ac{ble} den Bereich in 40 Kanäle auf und wechselt während der Verbindung in regelmäßigen Abständen oder bei Übertragungsproblemen den Kanal. Dieser Ansatz nennt sich Frequency Hopping Spread Spectrum \cite[Seite 16f]{Townsend14:GSB}.\\      
 
-\noindent Das Link Layer unterscheidet sich in seiner Funktionsweise nicht großartig von dem anderer Kommunikationsprotokolle. Hier werden die Nachrichten die für das  Versenden aus den oberen Schichten ankommen in Pakete gepackt und an das Physical Layer weitergereicht. Dieser Prozess ist für ankommende Pakete natürlich vice versa \cite[Seit 194]{Tanenbaum14:CN}. Besonders wichtig ist die Festlegung der Paketgröße von \ac{ble} durch das Link Layer. Seit Version 4.2 ist eine Payload von bis zu 251 Byte pro Paket möglich \cite{Gupta:WWW}. Zum Vergleich bei WLAN (IEEE 802.11) kann ein Paket bis zu 2312 Byte groß sein \cite[Seite 233]{Gessler15:WNN}. Daraus lässt sich schließen, dass \ac{ble} einen weitaus geringeren Datendurchsatz als WLAN hat. Allerdings liefert \ac{ble} wiederum andere Vorteile. Auf diese wird in Kapitel \ref{s:vergleich} näher eingegangen.\\
+\noindent Das Link Layer unterscheidet sich in seiner Funktionsweise nicht großartig von dem anderer Kommunikationsprotokolle. Hier werden die Nachrichten die für das  Versenden aus den oberen Schichten ankommen in Pakete gepackt und an das Physical Layer weitergereicht. Dieser Prozess ist für ankommende Pakete natürlich vice versa \cite[Seit 194]{Tanenbaum14:CN}. Die Besonderheit ist die Festlegung der Paketgröße von \ac{ble} durch das Link Layer. Seit Version 4.2 ist eine Payload von bis zu 251 Byte pro Paket möglich \cite{Gupta:WWW}. Zum Vergleich bei WLAN (IEEE 802.11) kann ein Paket bis zu 2312 Byte groß sein \cite[Seite 233]{Gessler15:WNN}. Daraus lässt sich schließen, dass \ac{ble} einen weitaus geringeren Datendurchsatz als WLAN hat. Allerdings liefert \ac{ble} wiederum andere Vorteile. Auf diese wird in Kapitel \ref{s:vergleich} näher eingegangen.\\
 
 \noindent Das Herzstück des \ac{ble} Protokollstacks bilden die beiden Profile \ac{gap} und \ac{gatt}. Diese befinden sich wie in Abbildung \ref{FIG:protokollstack} zu erkennen im Host Bereich der Architektur. Die beiden Protokolle bilden die Schnittstelle zur tatsächlichen Anwendung mit welcher der Nutzer interagiert.\\
 
@@ -129,8 +129,17 @@ Im folgenden Kapitel wird einleitend eine kurze Erläuterung über die drei zent
 \section{Schnittstellenbeschreibung}
 \label{s:interface} 
 
+\noindent Nachdem in Kapitel \ref{s:funktionsweise} auf die Funktionsweise von \ac{ble} eingegangen und die resultierenden Möglichkeiten erläutert wurden, wird im nachfolgenden Kapitel auf die Anbindung des Kommunikationsprotokolls an SAP eingegangen. Dabei liegen die Schwerpunkte auf Schnittstelle, Administration und daraus resultierenden Möglichkeiten für den Anwender.\\
+
 \subsection{SAP}
 \label{ss:interface:sap}
+
+\begin{figure}[!b]
+	\centering
+	\includegraphics[width=1\linewidth]{\figdir/Interface}
+	\caption{Überblick über die SAP \ac{iot} Architektur \cite[Seiten 117, 164, 181, 184, 201, 208, 221]{Holtschulte20:IOS}}
+	\label{FIG:Interface}
+\end{figure}
 
 \subsection{BLE}
 \label{ss:interface:ble}

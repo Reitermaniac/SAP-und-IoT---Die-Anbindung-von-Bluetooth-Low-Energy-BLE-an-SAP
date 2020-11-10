@@ -1,0 +1,33 @@
+Archtietktur SAP IoT:
+    - Komponenten (Seite 116f):
+        - Prozessteuernd: SAP Systeme oder auch nicht (Beides Möglich) Auch Kombination möglich
+        - IoT und Backendsysteme sind nahtlos miteinander Verknüpft (Backendsysteme = Prozessteuernd, Über SAP Cloud Platform oder On Premise)
+        - Aufnahme der Daten über die IoT Services der SAP Cloud Platform (Rohdaten -> MQTT, OPC, HTTP) für Pakete aus dem Internet
+        - BLE über die Edge Services: Für Protokolle, die nicht für MQTT, HTTP oder OPC passen (Seite 230)
+        - SAP Cloud Platform:
+            - SAP Cloud Platform IoT:
+                - Getäteverwaltung (Seite 201)
+                - Geräte anlegen 
+                - Empfängt Sensordaten via MQTT -> SAP Leonardo IoT
+            - SAP Edge Services:
+                - Ermöglicht anbindung weitere IoT Geräte, die nicht über SAP Cloud Platform IoT angeschlossen werden können (S 230)
+                - Registrierung eines Edge Gateways in SAP IoT Platform (S 230)
+                    - Cloud Services 
+                    - On Premise
+            - SAP Leonardo IoT:
+                - Beinhaltet Administrationsoberfläche (Seite 208)
+                    - Berechtigungsverwaltung (Tenant (Seite 221)) 
+                    - Rollenzuweisung
+                    - Streamingregeln
+                    - Regeln für Datenverwaltung (Persistente Daten)
+                    - Aktionen
+                    - Events
+                - Empfängt Sensordaten von SAP Cloud Platform oder Edge Services   
+                - Bietet Services zur Datenspeicherung/Verwaltung (Hot/Warm/Cold) (AP HANA SErvice oder Big Data Services) (Seite 173ff)
+                - Core Services 
+                    - (Sicherheit) wie Authentifizierung (S 176), Nutzerberchtigungsverwaltung (S 179), Rollenvergabe (S 181)
+                    - Entwicklung (SAP Web IDE (S 184))
+            - Integrationsservices:
+                - Ermöglichen die bidirectionale Kommunikation zwischen SAP Leonardo IoT und Backend Systemen (Seite 146)
+                - Integration über SAP Cloud Plaftorm Integration SErvice (Buchbar bei SAP) (SEit 146ff)
+                
