@@ -141,6 +141,32 @@ Im folgenden Kapitel wird einleitend eine kurze Erläuterung über die drei zent
 	\label{FIG:Interface}
 \end{figure}
 
+In Kapitel \ref{ss:grundlagen:sap} wurde auf die Marke SAP Leonardo verwiesen, welche unter anderem eine \ac{iot} Schnittstelle liefert. Ein Überblick über diese Schnittstelle findet sich in Abbildung \ref{FIG:Interface}. Aus dieser geht hervor, dass sich die gesamte Anwendung in der SAP Cloud befindet.\\
+
+\noindent Den Kern bildet hier die Unterkategorie von SAP Leonardo mit dem Beinamen \ac{iot}. Dieser Teil ist mit einer \ac{gui} buchbar, die neben einer Administrationsoberfläche, auf die in Kapitel \ref{sss:interface:connect:admin} näher eingegangen wird, Services für Datenverwaltung und IT Sicherheit liefert. Zusätzlich bietet SAP eine voll Funktionsfähige Web \ac{ide}.\\
+
+\noindent Die Datenverwaltung in SAP Leonardo \ac{iot} soll den Nutzer dabei unterstützen relevante Daten die von etwaigen \ac{iot} Geräten empfangen wurden gewinnbringend zu verwerten. Hierfür können Regeln und Aktionen definiert werden, wie die Daten behandelt werden sollen. Da auf verschieden Daten unterschiedlich schnell zugegriffen werden muss, bietet SAP auch hierfür verschieden Speicherbereiche an, welche sich entsprechend im Preis unterscheiden \cite[Seite 173]{Holtschulte20:IOS}. Wenn ein sehr schneller Speicherzugriff notwendig ist, dann liefert die Hot Storage Funktion die benötigte Geschwindigkeit. Allerdings ist diese auch am teuersten. Weitere Speicherzugriffsvarianten die das SAP \ac{iot} Paket enthält sind der Warm und Cold Storage. Bei der Warm Storage Variante sind schnelle aber nicht so häufige Speicherzugriffe notwendig. Die Cold Storage Variante hingegen speichert Daten die über lange Zeit nicht mehr benötigt werden. Entsprechend sind langsame Speichermedien vollkommen ausreichend. Diese Art des Speicherzugriffs nennt man auch Mutli Temperature Datenverwaltung \cite[Seite 118f]{Holtschulte20:IOS}. Falls eine langfristigere Speicherung oder eine Weiterverwendung der Daten benötigt werden, können SAP HANA oder Big Data Services gebucht werden, welche dies übernehmen \cite[Seite 173]{Holtschulte20:IOS}.\\    
+
+\noindent Um die Sicherheit der Anwendung zu gewährleisten bietet die SAP Cloud Platform diverse Services zur Authentifizierung. In der Regel weißt man dabei seine Identität über eine Drittanbieter Software aus. Darüber hinaus liefert die Anwendung SAP Cloud Platform Cockpit die Möglichkeit Nutzern verschiedene Rollen zuzuweisen \cite[Seite 176ff]{Holtschulte20:IOS}.\\
+
+\noindent Um die SAP Cloud mit einem Backend System zu verbinden wird der \ac{cpi}  Service verwendet. Dabei ist zu beachten, das auch nicht SAP Systeme über diesen Service mit der Cloud kommunizieren können. Der Service ist mit dem SAP Cloud Paket buchbar \cite[Seite 146]{Holtschulte20:IOS}.\\
+
+\noindent Um ein \ac{iot} Gerät mit SAP Leonardo \ac{iot} anzubinden gibt es zwei Möglichkeiten. Zum einen den Service SAP Cloud Platform \ac{iot} und zum anderen die Verwendung sogenannter Edge Services. Erster ist die Standardlösung welche von SAP angeboten wird. Über diesen Service lassen sich angeschlossene Geräte unter dem Reiter Device Management verwalten und neue hinzufügen. Im Reiter Component Management wiederum kann der Gateway konfiguriert werden, über den die Kommunikation mit dem jeweiligen Gerät abgehandelt wird \cite[Seite 200f]{Holtschulte20:IOS}. Hierbei gibt es folgende drei mögliche Gateways \cite[Seite 117]{Holtschulte20:IOS}:
+\begin{itemize}
+	\item{\ac{opc}}
+	\item{\ac{mqtt}}
+	\item{\ac{http}}
+\end{itemize}
+Über den Reiter Processing kann anschließend definiert werden, auf welche Weiße ankommende Daten von \ac{iot} Geräten verarbeitet werden. Zusätzlich können Daten sogar für einen Zeitraum X aufbewahrt werden \cite[Seite 205]{Holtschulte20:IOS}.\\
+
+\noindent Sollte das \ac{iot} Gerät, welches an SAP angebunden werden soll, über keine Möglichkeit verfügen an einen der drei SAP Cloud Platfrom \ac{iot} Gateways angeschlossen zu werden, wird ein SAP Edge Service benötigt. Ein solcher kommt darüber hinaus zum Einsatz, wenn es nötig ist die Daten, welche das \ac{iot} Gerät ermittelt, möglichst schnell zu verwerten und auf diese zu reagieren. Dafür wird direkt am \ac{iot} Gerät ein Service installiert, welcher über Konfigurationsmöglichkeiten verfügt um entsprechende Regeln anzuwenden. Da die Latenz zur Cloud in diesem Fall viel zu hoch ist wird ein SAP Edge Service nicht an die SAP Cloud Platform \ac{iot} angebunden. Ein solcher Service verfügt selbst über eine Liste von Gateways um direkt mit dem \ac{iot} Gerät und SAP Leonardo \ac{iot} zu kommunizieren. Dabei erweitert SAP die Liste an Möglichen Gateways zu \ac{iot} Geräten um die Protokolle Sigfox, FILE, Modbus, Constrained Application Protocol (CoAP) und Simple Network Management Protocol (SNMP). Um auf bestimmte Szenarios reagieren zu können sind über einen SAP Edge Service folgende integrierte Services verfügbar\cite[Seite 229ff]{Holtschulte20:IOS}:
+\begin{itemize}
+	\item{Essenzielle Business Funktionen: Synchronisation mit SAP Geschäftssystemen}
+	\item{Streaming: Analyse und Verarbeiten der \ac{iot} Rohdaten}
+	\item{Persistenz: Vorübergehende Speicherung von Daten auf dem SAP Edge Service}
+	\item{Predictive Analytics: Analyse der Daten mittels künstlicher Intelligenz}
+\end{itemize}   
+
 \subsection{BLE}
 \label{ss:interface:ble}
 
