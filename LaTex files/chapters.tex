@@ -131,7 +131,7 @@ Im folgenden Kapitel wird einleitend eine kurze Erläuterung über die drei zent
 
 \noindent Nachdem in Kapitel \ref{s:funktionsweise} auf die Funktionsweise von \ac{ble} eingegangen und die resultierenden Möglichkeiten erläutert wurden, wird im nachfolgenden Kapitel auf die Anbindung des Kommunikationsprotokolls an SAP eingegangen. Dabei liegen die Schwerpunkte auf Schnittstelle, Administration und daraus resultierenden Möglichkeiten für den Anwender.\\
 
-\subsection{SAP}
+\subsection{SAP Leonardo \ac{iot}}
 \label{ss:interface:sap}
 
 \begin{figure}[!b]
@@ -167,8 +167,19 @@ In Kapitel \ref{ss:grundlagen:sap} wurde auf die Marke SAP Leonardo verwiesen, w
 	\item{Predictive Analytics: Analyse der Daten mittels künstlicher Intelligenz}
 \end{itemize}   
 
-\subsection{BLE}
+\subsection{\ac{ble} über \ac{mqtt}}
 \label{ss:interface:ble}
+
+\begin{figure}[!b]
+	\centering
+	\includegraphics[width=0.8\linewidth]{\figdir/ble_mqtt}
+	\caption{Zusammenschluss zwischen \ac{ble}, \ac{mqtt} und SAP \cite[Seite 3]{Zivkovic20:MQTT} \cite[Seiten 230f]{Holtschulte20:IOS}}
+	\label{FIG:mqtt}
+\end{figure}
+
+\noindent Bei \ac{ble} handelt es sich um ein Protokoll, welches nicht über IP Adressen, also das Internet, kommuniziert. Da SAP Leonardo \ac{iot} jedoch eine Lösung in der SAP Cloud ist wird eine Schnittstelle benötigt, um Daten zwischen Endgerät und Cloud zu transportieren. Zusätzlich verfügen die SAP \ac{iot} Lösungen über kein \ac{ble} Modul, welches direkt mit einem entsprechenden Endgerät kommunizieren kann. SAP verfügt allerdings sowohl in der SAP Cloud Platform \ac{iot} als auch in den SAP Edge Services über einen \ac{mqtt} Gateway. Ein solcher ist in der Lage Daten über einen sogenannten Publisher zu empfangen und dann über das Internet an die entsprechenden Stellen weiterzuleiten.\\
+
+\noindent In Abbildung \ref{FIG:mqtt} sind die verschiedenen Verbindungsabschnitte zwischen \ac{ble} und SAP dargestellt und in einen Zusammenhang gebracht. Die \ac{ble} Sensoren/Geräte nehmen entweder die Rolle eines Boradcasters oder Peripherals ein. Die Bedeutung dieser Rollen findet sich in Kapitel \ref{ss:funktionsweise:kommunkation}. Zum Empfangen von Nachrichten wird ein Gerät benötigt, welches über ein \ac{ble} Modul verfügt und entweder als Observer oder Server konfigurierbar ist. Dieses Gerät muss zusätzlich über eine Internetverbindung verfügen. Zur Anbindung an SAP wird auf dem Gerät eine Software installiert, welche \ac{mqtt} unterstützt. Diese Software wird als Publisher konfiguriert. Dieser Publisher kann dann als solcher am SAP \ac{mqtt} Broker angelegt werden. Auf SAP Seite leitet der SAP \ac{mqtt} Broker dann alle an diesen veröffentlichten Daten an etwaige konfigurierte Stellen weiter. Diese Stellen werden im \ac{mqtt} Kontext als Subscriber benannt.\\
 
 \subsection{Anbindungsmöglichkeiten}
 \label{ss:interface:connect}
