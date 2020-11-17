@@ -170,7 +170,22 @@ In Kapitel \ref{ss:grundlagen:sap} wurde auf die Marke SAP Leonardo verwiesen, w
 \subsection{Administration SAP Leonardo IoT}
 \label{ss:interface:admin}
 
-\noindent
+\noindent Der Administrationsbereich von SAP Leonardo \ac{iot} verfügt über einen Arbeitsbereich welcher neben diversen Administrationsfunktionen zusätzlich Möglichkeiten zur Modellierung und Simulation in Form eines digitalen Zwillings der angeschlossenen \ac{iot} Systeme bietet. Zur Administration der Schnittstelle liefert die \ac{gui} folgende Möglichkeiten:
+\begin{itemize}
+	\item{Rollenverwaltung und Zuweisung}
+	\item{Tenantverwaltung}
+	\item{Paketverwaltung}
+	\item{Definition von Regeln und Aktionen}
+\end{itemize}
+
+\noindent Im Bereich "`Trust Configurator"' lassen sich den jeweiligen Benutzern des Systems ihre Rollen zuweisen. Dies wird, abhängig von deren Identity Provider, über deren Email oder entsprechen andere Identifikatoren abgehandelt \cite[Seite 209f]{Holtschulte20:IOS}. Um Zuweisungen vornehmen zu können benötigt der Nutzer Administrationsrechte. Diese erhält er über einen bei der Buchung durch SAP ausgestellten Tenant. Dieser definiert die Rolle des Tenant Administrators und entspricht dem Systemadministrator. Er verfügt über folgende drei gesonderte Administrationsbereiche \cite[Seiten 220 - 221, 223]{Holtschulte20:IOS}:
+\begin{itemize}
+	\item{Objektberechtigungen: Anlegen von Berechtigungen für Objekt- und Personengruppen}
+	\item{Personen: Anlegen und Unternehmenszuweisung von Personen}
+	\item{Unternehmen: Anlegen von Unternehmen zur Personenzuweisung}
+\end{itemize}
+
+\noindent Ein weiterer wichtiger Bereich der Administration ist die Definition von Regeln und Aktionen. Ein Beispiel für eine Regel wäre die Messung eines zu hohen Temperaturwertes mittels \ac{iot} Gerätes. Regeln dienen daher der Definition von Grenzwerten, welche bei Über- oder Unterschreitung eine Aktion erfordern. Um in SAP Leonardo \ac{iot} eine Regel einzuführen muss zunächst ein Kontext definiert werden. Dieser beschreibt die Eigenschaft des Geräteteils, für welche die Regel definiert ist. Im vorigen Beispiel wäre der Kontext die Temperaturmessungseinheit des Gerätes. In diesem Kontext lassen sich Regeln in einer der drei Kategorien Streaming Cloud, Streaming Hybrid, oder Eingeplant definieren. Streaming Cloud Regeln werden für Ereignisse definiert, welche bei Geräten auftreten, die über die SAP \ac{iot} Platform angeschlossen sind. Streaming Hybrid Daten sind wiederum das Pendant für die Edge Services. Eingeplante Regeln werden prüfen in bestimmten Abständen oder zu selbst definierten Zeitpunkten ob in den letzten X Minuten eine Regelverletzung erkannt wurde. Diese finden bei nichtkritischen Komponenten Verwendung. Für jede Regel lässt sich nun eine Aktion definieren, welche bei deren Verletzung ausgeführt wird. Sämtliche Einstellungen für Regeln und Aktionen finden sich unter dem Reiter "`IoT-Regeln und Aktionen"' im Administrationspanel \cite[Seite 224ff]{Holtschulte20:IOS}.\\   
 
 \subsection{Bluetooth Low Energy mit Message Queuing Telemetry Transport (MQTT)}
 \label{ss:interface:ble}
