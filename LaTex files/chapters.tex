@@ -131,7 +131,7 @@ Im folgenden Kapitel wird einleitend eine kurze Erläuterung über die drei zent
 
 \noindent Nachdem in Kapitel \ref{s:funktionsweise} auf die Funktionsweise von \ac{ble} eingegangen und die resultierenden Möglichkeiten erläutert wurden, wird im nachfolgenden Kapitel auf die Anbindung des Kommunikationsprotokolls an SAP eingegangen. Dabei liegen die Schwerpunkte auf Schnittstelle, Administration und daraus resultierenden Möglichkeiten für den Anwender.\\
 
-\subsection{SAP Leonardo IoT}
+\subsection{Komponenten SAP Leonardo IoT}
 \label{ss:interface:sap}
 
 \begin{figure}[!b]
@@ -143,7 +143,7 @@ Im folgenden Kapitel wird einleitend eine kurze Erläuterung über die drei zent
 
 In Kapitel \ref{ss:grundlagen:sap} wurde auf die Marke SAP Leonardo verwiesen, welche unter anderem eine \ac{iot} Schnittstelle liefert. Ein Überblick über diese Schnittstelle findet sich in Abbildung \ref{FIG:Interface}. Aus dieser geht hervor, dass sich die gesamte Anwendung in der SAP Cloud befindet.\\
 
-\noindent Den Kern bildet hier die Unterkategorie von SAP Leonardo mit dem Beinamen \ac{iot}. Dieser Teil ist mit einer \ac{gui} buchbar, die neben einer Administrationsoberfläche, auf die in Kapitel \ref{sss:interface:connect:admin} näher eingegangen wird, Services für Datenverwaltung und IT Sicherheit liefert. Zusätzlich bietet SAP eine voll Funktionsfähige Web \ac{ide}.\\
+\noindent Den Kern bildet hier die Unterkategorie von SAP Leonardo mit dem Beinamen \ac{iot}. Dieser Teil ist mit einer \ac{gui} buchbar, die neben einer Administrationsoberfläche, auf die in Kapitel \ref{ss:interface:admin} näher eingegangen wird, Services für Datenverwaltung und IT Sicherheit liefert. Zusätzlich bietet SAP eine voll Funktionsfähige Web \ac{ide}.\\
 
 \noindent Die Datenverwaltung in SAP Leonardo \ac{iot} soll den Nutzer dabei unterstützen relevante Daten die von etwaigen \ac{iot} Geräten empfangen wurden gewinnbringend zu verwerten. Hierfür können Regeln und Aktionen definiert werden, wie die Daten behandelt werden sollen. Da auf verschieden Daten unterschiedlich schnell zugegriffen werden muss, bietet SAP auch hierfür verschieden Speicherbereiche an, welche sich entsprechend im Preis unterscheiden \cite[Seite 173]{Holtschulte20:IOS}. Wenn ein sehr schneller Speicherzugriff notwendig ist, dann liefert die Hot Storage Funktion die benötigte Geschwindigkeit. Allerdings ist diese auch am teuersten. Weitere Speicherzugriffsvarianten die das SAP \ac{iot} Paket enthält sind der Warm und Cold Storage. Bei der Warm Storage Variante sind schnelle aber nicht so häufige Speicherzugriffe notwendig. Die Cold Storage Variante hingegen speichert Daten die über lange Zeit nicht mehr benötigt werden. Entsprechend sind langsame Speichermedien vollkommen ausreichend. Diese Art des Speicherzugriffs nennt man auch Mutli Temperature Datenverwaltung \cite[Seite 118f]{Holtschulte20:IOS}. Falls eine langfristigere Speicherung oder eine Weiterverwendung der Daten benötigt werden, können SAP HANA oder Big Data Services gebucht werden, welche dies übernehmen \cite[Seite 173]{Holtschulte20:IOS}.\\    
 
@@ -167,7 +167,12 @@ In Kapitel \ref{ss:grundlagen:sap} wurde auf die Marke SAP Leonardo verwiesen, w
 	\item{Predictive Analytics: Analyse der Daten mittels künstlicher Intelligenz}
 \end{itemize}   
 
-\subsection{Bluetooth Low Energy mit Message Queuing Telemetry Transport}
+\subsection{Administration SAP Leonardo IoT}
+\label{ss:interface:admin}
+
+\noindent
+
+\subsection{Bluetooth Low Energy mit Message Queuing Telemetry Transport (MQTT)}
 \label{ss:interface:ble}
 
 \begin{figure}[!b]
@@ -191,21 +196,13 @@ Aus Abbildung \ref{FIG:mqtt} geht hervor, dass sämtliche Kommunikation zwischen
 
 \noindent Ein Thema im \ac{mqtt} Kontext gliedert sich hierarchisch in einer Baumstruktur. Sollte beispielsweise ein \ac{ble} Sensor dafür verwendet werden in einem Logistikzentrum die Position eines autonomen Transportfahrzeuges zu überwachen, dann könnte am Broker ein Topic mit der Hierarchie "`lagerhalle/abschnitt\_c/fahrzeug\_12/position"' angelegt werden, auf welches der entsprechende Publisher veröffentlicht. Ein Subscriber wiederum wäre bemächtigt mit dem Topic "`lagerhalle/abschnitt\_c/+/position"' die Position aller registrierten Fahrzeuge in Abschnitt C der Lagerhalle zu abonnieren \cite{MQTT19:WWW}.\\
 
-\noindent Im konkreten Fall von \ac{ble} und SAP können die Topics über die \ac{gui} der SAP Cloud Platform \ac{iot} oder des SAP Edge Services konfiguriert werden. Die Nachrichten, welche veröffentlicht werden enthalten die Payload im Json Format. Daraus resultiert die Notwendigkeit einer Umwandlung der \ac{ble} Daten in das Json Format auf \ac{ble} Empfänger Seite. Diese muss durch das Empfängergerät vorgenommen werden, bevor die Daten an den Publisher weitergereicht werden. \cite[Seite 247]{Holtschulte20:IOS}.\\
+\noindent Im konkreten Fall von \ac{ble} und SAP können die Topics über die \ac{gui} der SAP Cloud Platform \ac{iot} oder des SAP Edge Services konfiguriert werden. Die Nachrichten, welche veröffentlicht werden enthalten die Payload im Json Format. Daraus resultiert die Notwendigkeit einer Umwandlung der \ac{ble} Daten in das Json Format auf \ac{ble} Empfänger Seite. Diese muss durch das Empfängergerät vorgenommen werden, bevor die Daten an den Publisher weitergereicht werden. \cite[Seite 247]{Holtschulte20:IOS}.\\ 
 
-\subsection{Anbindungsmöglichkeiten}
-\label{ss:interface:connect}
-
-ToDo: Empfehlenswert nach HW zu suchen, welche MQTT und BLE beinhaltet (Geringerer Aufwand)
-
-\subsubsection{Bewertung der Möglichkeiten}
-\label{sss:interface:connect:eval}
-
-\subsubsection{Administration}
-\label{sss:interface:connect:admin}
-
-\section{Vergleich mit anderen gängigen IoT Kommunikationsprotokollen}
+\section{Anwendungsgebiete und Alleinstellungsmerkmale von Bluetooth Low Energy im SAP Umfeld}
 \label{s:vergleich} 
+
+\subsection{Anwendungsgebiete}
+\label{ss:vergleich:anw}
 
 \subsection{Vorteile}
 \label{ss:vergleich:adv}
