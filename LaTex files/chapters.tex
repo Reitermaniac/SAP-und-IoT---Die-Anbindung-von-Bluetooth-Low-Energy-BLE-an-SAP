@@ -229,10 +229,18 @@ Aus Abbildung \ref{FIG:mqtt} geht hervor, dass sämtliche Kommunikation zwischen
 
 \noindent Beide Protokolle arbeiten auf dem selben Frequenzband und sind primär für den Nachrichtenaustausch zwischen zwei Geräten gedacht. Für den Einsatz von WLAN sprechen Datenrate, Reichweite und Zugriff auf das Internet. Nachteil davon ist jedoch die Notwendigkeit einer Infrastruktur und der hohe Energieverbrauch. \ac{ble} kommt hingegen ohne Infrastruktur aus und kann über die Konfiguration verschiedener Rollen selbstständig ein Ad-Hoc Netzwerk aufspannen. Sollten Anhand dieser Punkte noch keine eindeutige Entscheidung zwischen den Protokollen gefällt werden können, sollten die geringeren Kosten für \ac{ble} Geräte in Betracht gezogen werden \cite[Seite 271]{Gessler15:WNN}.\\   
 
-\subsection{ZigBee}
+\subsection{ZigBee (IEEE 802.15.4)}
 \label{ss:vergleich:zigbee}
 
-\noindent 
+\noindent ZigBee ist ein Funkprotokoll, welches eine günstige, ausfallsichere und energiesparsame Vernetzung von \ac{iot} Geräten ermöglicht. Im SAP Kontext besonders interessant sind die Anwendungsgebiete in Medizin-, Gebäude-, und Industrie-Automatisierung. Es basiert auf dem IEEE 802.15.4 Standard \cite[Seite 195]{Gessler15:WNN}.\\  
+
+\noindent ZigBee legt den Hauptaugenmerk auf die Fernsteuerung von einfachen Gebäudeausstattungsgeräten wie beispielsweise Lampen, Lichtschaltern und Heizungen. Das Protokoll sendet Nachrichten aus Energiegründen nur über kurze Distanzen zu benachbarten ZigBee Geräten. Eine hohe Reichweite erreicht das Protokoll durch die Vernetzung der verfügbaren Geräte. Um ein Netz aufzuspannen werden alle Geräte an einem Gateway bekannt gemacht. Dieser wird als Koordinator bezeichnet. Neben diesem beinhaltet ein ZigBee Netzwerk Router und Endknoten. Ein Router gibt dabei alle Nachrichten, welche nicht an in adressiert sind an den nächsten Knoten weiter. Sollte ein Gerät ausfallen oder entfernt werden, wird dies erkannt und eine neue Route zu den verlorenen Geräten wird eingerichtet \cite{ZIG20:WWW}.\\
+
+\noindent Die zugrundeliegende IEEE 802.15.4 Standard benötigt im Vergleich zu \ac{ble} beinahe die doppelte Energie um ein Paket zu übertragen \cite[Seite 4]{Fafoutis16:BOI}. Diesen höheren Energieverbrauch bekommt ZigBee allerdings durch die kurzen Sendedistanzen zwischen den einzelnen Geräten des Netzwerkes und dem senden kleiner Datenpakete unter Kontrolle. Dadurch kann ein ZigBee Gerät trotz des vergleichbar hohen Energieverbrauchs von IEEE 802.15.4 im Hibernation Mode des ZigBee Protokollstacks bis zu mehrere Jahre aktiv sein \cite[Seite 267]{Gessler15:WNN}.\\
+
+\noindent Die Mobilität des ZigBee Protokolls ist durch die Gateway Instanz in Form des Koordinators eingeschränkt. Im Kontext mit SAP fällt dieser allerdings nicht schwer ins Gewicht, da auch für \ac{ble} ein Gateway für \ac{mqtt} eingerichtet werden muss. Dennoch verfügt ZigBee über keinen Ad-Hoc Modus wie in \ac{ble} in vollem Umfang einsetzt. Im Bezug auf Signalstörungen der beiden Protokolle über mehrere Räume hinweg sind ist die Stabilität der Übertragungen beinahe Identisch \cite[Seite 6]{Fafoutis16:BOI}.\\
+
+\noindent ZigBee ist somit ein Protokoll, welches eine gute alternative zu \ac{ble} bietet. Allerdings muss die geringe Datenrate des Protokolls in den Auswahlprozess eingebunden werden. ZigBee eignet sich Hervorragend um knappe Befehle an verteilte Systeme zu übertragen. Sollte jedoch eine aufwändigere Kommunikation benötigt werden, stößt ZigBee schnell an seine Grenzen. Somit ist \ac{ble} das funktional Umfangreichere Protokoll, muss sich allerdings im Steuerungsbereich von einfachen Geräten geschlagen geben.\\
 
 \section{Fazit}
 \label{s:fazit}
