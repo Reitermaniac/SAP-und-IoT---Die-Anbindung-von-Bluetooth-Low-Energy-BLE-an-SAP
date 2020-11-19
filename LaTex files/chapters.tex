@@ -122,7 +122,7 @@ Im folgenden Kapitel wird einleitend eine kurze Erläuterung über die drei zent
 
 \noindent Die Möglichkeit der Datenübertragung ist die Basis des gesamten \ac{ble} Stack. Neben Audio Dateien gibt es eine Vielzahl anderer Anwendungsfälle, wie beispielsweise Kabellosen Tastaturen oder Mäuse. Auch neuere Technologien wie Fitnesstracker oder Smart Watches erfreuen sich in den letzten Jahren immer größerer Beliebtheit. So sind die Umsatzzahlen im Verkauf von Smart Watches laut Heise Online, im Vergleich zum Jahr 2019, dieses Jahr um 20 Prozent gestiegen \cite{HEI20:WWW}. \ac{ble} wird in diesem Fall Verwendet um die von den jeweiligen Peripherals erhobenen Fitness oder Gesundheitsdaten an das Smartphone als Central Gerät zu übertragen.\\
 
-\noindent Ein großes Problem der vergangenen Jahre war die Positionsbestimmung in geschlossenen Räumen. Im Freien ist diese durch Satellitenkommunikation möglich. In Gebäuden kann diese Technologie allerdings auf Grund zu großer Ungenauigkeiten und der fehlenden direkten Verbindung nicht gewährleistet werden. Für dieses Problem liefert \ac{ble} mit Hilfe der Broadcaster Rolle eine Lösung. Dafür gibt es ein breites Spektrum an Möglichkeiten. Dieses Reicht von Indoor Navigation über die Positionsüberwachung von Gegenständen oder Personen bis hin zu Informationsystemen. Letztere stellen \ac{ble} Broadcaster dar, die bei Annäherung eines Observers nützliche Informationen senden. Dies kann beispielsweise in einem Museum sehr nützlich sein.\\          
+\noindent Ein großes Problem der vergangenen Jahre war die Positionsbestimmung in geschlossenen Räumen. Im Freien ist diese durch Satellitenkommunikation möglich. In Gebäuden kann diese Technologie allerdings auf Grund zu großer Ungenauigkeiten und der fehlenden direkten Verbindung nicht gewährleistet werden. Für dieses Problem liefert \ac{ble} mit Hilfe der Broadcaster Rolle eine Lösung. Dafür gibt es ein breites Spektrum an Möglichkeiten. Dieses Reicht von Indoor Navigation über die Positionsüberwachung von Gegenständen oder Personen bis hin zu Informationsystemen. Letztere stellen \ac{ble} Broadcaster dar, die bei Annäherung eines Observers nützliche Informationen senden. Dies kann beispielsweise in einem Museum sehr nützlich sein. Auch im Hinblick auf eine SAP Anbindung bietet die Indoor Positionsbestimmung mittels \ac{ble} eine praktische Lösung. Diese kann beispielsweise zur Überwachung von autonomen Fahrzeugen in der Fertigung genutzt werden.\\          
 
 \noindent Der vierte große Bereich, welchen die Bluetooth \ac{sig} besonders hervorhebt, behandelt die Vernetzung verschiedener \ac{ble} Geräte. Dieser Bereich ist vor Allem im Hinblick an SAP besonders interessant, da er sich mit der Kontrolle, Überwachung und Automatisierung ganzer Systeme befasst. Die Bluetooth \ac{sig} Verspricht unter anderem Lösungen zur Überwachung und Steuerung von Temperatur, Feuchtigkeit und Raumbelegungen in Gebäuden. Diese sollen das Ziel verfolgen die Produktivität der Angestellten zu steigern.\\   
 
@@ -199,7 +199,7 @@ In Kapitel \ref{ss:grundlagen:sap} wurde auf die Marke SAP Leonardo verwiesen, w
 
 \noindent Bei \ac{ble} handelt es sich um ein Protokoll, welches nicht über IP Adressen, also das Internet, kommuniziert. Da SAP Leonardo \ac{iot} jedoch eine Lösung in der SAP Cloud ist wird eine Schnittstelle benötigt, um Daten zwischen Endgerät und Cloud zu transportieren. Zusätzlich verfügen die SAP \ac{iot} Lösungen über kein \ac{ble} Modul, welches direkt mit einem entsprechenden Endgerät kommunizieren kann. SAP verfügt allerdings sowohl in der SAP Cloud Platform \ac{iot} als auch in den SAP Edge Services über einen \ac{mqtt} Gateway. Ein solcher ist in der Lage Daten über einen sogenannten Publisher zu empfangen und dann über das Internet an die entsprechenden Stellen weiterzuleiten.\\
 
-\noindent In Abbildung \ref{FIG:mqtt} sind die verschiedenen Verbindungsabschnitte zwischen \ac{ble} und SAP dargestellt und in einen Zusammenhang gebracht. Die \ac{ble} Sensoren/Geräte nehmen entweder die Rolle eines Boradcasters oder Peripherals ein. Die Bedeutung dieser Rollen findet sich in Kapitel \ref{ss:funktionsweise:kommunkation}. Zum Empfangen von Nachrichten wird ein Gerät benötigt, welches über ein \ac{ble} Modul verfügt und entweder als Observer oder Server konfigurierbar ist. Dieses Gerät muss zusätzlich über eine Internetverbindung verfügen. Zur Anbindung an SAP wird auf dem Gerät eine Software installiert, welche \ac{mqtt} unterstützt. Diese Software wird als Publisher konfiguriert. Dieser Publisher kann dann als solcher am SAP \ac{mqtt} Broker angelegt werden. Auf SAP Seite leitet der SAP \ac{mqtt} Broker dann sämtliche an ihn veröffentlichten Daten an etwaige konfigurierte Stellen weiter. Diese Stellen werden im \ac{mqtt} Kontext als Subscriber benannt.\\
+\noindent In Abbildung \ref{FIG:mqtt} sind die verschiedenen Verbindungsabschnitte zwischen \ac{ble} und SAP dargestellt und in einen Zusammenhang gebracht. Die \ac{ble} Sensoren/Geräte nehmen entweder die Rolle eines Boradcasters oder Peripherals ein. Die Bedeutung dieser Rollen findet sich in Kapitel \ref{ss:funktionsweise:kommunkation}. Zum Empfangen von Nachrichten wird ein Gerät benötigt, welches über ein \ac{ble} Modul verfügt und entweder als Observer oder Central konfigurierbar ist. Dieses Gerät muss zusätzlich über eine Internetverbindung verfügen. Zur Anbindung an SAP wird auf dem Gerät eine Software installiert, welche \ac{mqtt} unterstützt. Diese Software wird als Publisher konfiguriert. Dieser Publisher kann dann als solcher am SAP \ac{mqtt} Broker angelegt werden. Auf SAP Seite leitet der SAP \ac{mqtt} Broker dann sämtliche an ihn veröffentlichten Daten an etwaige konfigurierte Stellen weiter. Diese Stellen werden im \ac{mqtt} Kontext als Subscriber benannt.\\
 
 \noindent Das \ac{mqtt} Protokoll besteht grundlegend aus folgenden drei Komponenten:
 \begin{itemize}
@@ -213,17 +213,26 @@ Aus Abbildung \ref{FIG:mqtt} geht hervor, dass sämtliche Kommunikation zwischen
 
 \noindent Im konkreten Fall von \ac{ble} und SAP können die Topics über die \ac{gui} der SAP Cloud Platform \ac{iot} oder des SAP Edge Services konfiguriert werden. Die Nachrichten, welche veröffentlicht werden enthalten die Payload im Json Format. Daraus resultiert die Notwendigkeit einer Umwandlung der \ac{ble} Daten in das Json Format auf \ac{ble} Empfänger Seite. Diese muss durch das Empfängergerät vorgenommen werden, bevor die Daten an den Publisher weitergereicht werden. \cite[Seite 247]{Holtschulte20:IOS}.\\ 
 
-\section{Anwendungsgebiete und Alleinstellungsmerkmale von Bluetooth Low Energy im SAP Umfeld}
+\section{Vergleich von Bluetooth Low Energy mit konkurrierenden Protokollen}
 \label{s:vergleich} 
 
-\subsection{Anwendungsgebiete}
-\label{ss:vergleich:anw}
+\noindent Nach Erläuterung der technischen Rahmenbedingungen für die Anbindung von \ac{ble} Geräten an SAP im vorangehenden Kapitel und der Erklärung der klassischen Anwendungsgebiete in Kapitel \ref{ss:funktionsweise:anwendungen}, stellt sich nun die Frage was \ac{ble} von anderen \ac{iot} Protokollen unterscheidet und wie sich \ac{ble} im Vergleich zu diesen profilieren kann. Um dieser Frage auf den Grund zu gehen, wird im folgenden Kapitel geklärt, welche \ac{iot} Kommunikationsprotokolle mit \ac{ble} konkurrieren und es werden Vor- und Nachteile gegeneinander abgewägt.\\ 
 
-\subsection{Vorteile}
-\label{ss:vergleich:adv}
+\subsection{WLAN (IEEE 802.11b)}
+\label{ss:vergleich:wlan}
 
-\subsection{Nachteile}
-\label{ss:vergleich:disadv}
+\noindent WLAN ist ein Kommunikationsprotokoll, welches wie \ac{ble} im lizenzfreien 2,4 bis 5 GHz Frequenzbereich sendet, aber eine viel höhere Datenrate und Reichweite bietet. Deshalb ist WLAN aktuell das Protokoll mit den meisten Nutzgeräten weltweit \cite[Seite 193f]{Gessler15:WNN}. Dabei gehört es allerdings nicht zur Gruppe der klassischen \ac{iot} Kommunikationsprotokolle, da sämtliche Kommunikation über einen Router läuft, welcher die Geräte miteinander verbindet.\\
+
+\noindent Die hohe Datenrate und Reichweite von WLAN resultiert in einem sehr hohen Energieverbrauch. Ein \ac{ble} Gerät kann hingegen bereits mit geringen Stromquellen versorgt werden. Des weiteren sind die Kosten für \ac{ble} Chiplösungen viel geringer und können einem Unternehmen in hoher Stückzahl viel Geld einsparen. Im Gegensatz zu WLAN ist \ac{ble} ausschließlich im Ad-Hoc Modus verfügbar. Dies ermöglicht die Aufspannung eines dezentrale Funkbetriebes und einer daraus resultierend geringeren Infrastruktur und wiederum eingesparten Kosten in Installation und Instandhaltung \cite[Seite 206]{Gessler15:WNN}.\\
+
+\noindent WLAN bietet zwar auch die Möglichkeit eines Ad-Hoc Modus. Dies bringt allerdings eine aufwändigere Konfiguration mit sich, da jede IP Adresse manuell zugewiesen werden muss. Zusätzlich ist dieser Ad-Hoc Modus ausschließlich ohne Zugriff auf das Internet verfügbar und benötigt auf Grund der WLAN spezifischen Paketgröße dennoch mehr Energie als \ac{ble}. Der WLAN Ad-Hoc Modus bietet deshalb allerdings auch die Möglichkeit einer höheren Datenrate. Um den hohen Stromverbrauch einzuschränken verfügt WLAN über diverse Stromsparfunktionen. Dafür werden einerseits eingeholte Informationen gecached um unnötigen Datenaustausch zu vermeiden. Andererseits werden die Abstände zwischen dem Senden bestimmter Signale verlängert \cite[Seite 240ff]{Gessler15:WNN}.\\ 
+
+\noindent Beide Protokolle arbeiten auf dem selben Frequenzband und sind primär für den Nachrichtenaustausch zwischen zwei Geräten gedacht. Für den Einsatz von WLAN sprechen Datenrate, Reichweite und Zugriff auf das Internet. Nachteil davon ist jedoch die Notwendigkeit einer Infrastruktur und der hohe Energieverbrauch. \ac{ble} kommt hingegen ohne Infrastruktur aus und kann über die Konfiguration verschiedener Rollen selbstständig ein Ad-Hoc Netzwerk aufspannen. Sollten Anhand dieser Punkte noch keine eindeutige Entscheidung zwischen den Protokollen gefällt werden können, sollten die geringeren Kosten für \ac{ble} Geräte in Betracht gezogen werden \cite[Seite 271]{Gessler15:WNN}.\\   
+
+\subsection{ZigBee}
+\label{ss:vergleich:zigbee}
+
+\noindent 
 
 \section{Fazit}
 \label{s:fazit}
