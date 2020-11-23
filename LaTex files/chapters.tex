@@ -83,7 +83,7 @@
 	\item{Verbindbar (Rolle: Central, Peripheral)}
 \end{itemize}   
 
-\noindent Im \ac{gatt} wird definiert, ob es sich bei dem Gerät um einen Client oder Server handelt. Zweiterer verarbeitet die Kommunikationsanfragen des Clients und liefert die gewünschten Antworten oder führt entsprechende Aktionen aus. Der Server ist in der Regel ein Peripheral auf dem Services hinterlegt sind \cite[Seite 30]{Usama17:BBS}. Welche das sind und was für eine Aktion mit diesen verbunden ist wird in der Regel durch die Nutzeranwendung festgelegt. Der Client ist dementsprechend ein Central, welches die gesamte Verbindung steuert. Jeder Service verfügt über einen \ac{uuid}. Mit diesem kann der Client eine gezielte Anfrage auf den entsprechenden Service tätigen.\\    
+\noindent Im \ac{gatt} wird definiert, ob es sich bei dem Gerät um einen Client oder Server handelt. Zweiterer verarbeitet die Kommunikationsanfragen des Clients und liefert die gewünschten Antworten oder führt entsprechende Aktionen aus. Der Server ist in der Regel ein Peripheral auf dem Services hinterlegt sind \cite[Seite 30]{Usama17:BBS}. Welche das sind und was für eine Aktion mit diesen verbunden ist wird in der Regel durch die Nutzeranwendung festgelegt. Der Client ist dementsprechend ein Central, welches die gesamte Verbindung steuert. Jeder Service verfügt über einen Universally Unique Identifier. Mit diesem kann der Client eine gezielte Anfrage auf den entsprechenden Service tätigen.\\    
 
 \noindent An oberster Stelle des Protokollstacks befindet sich die Nutzeranwendung. Diese ist nach dem entsprechenden Use Case programmiert und variiert von Anwendung zu Anwendung. Ausschließlich der Stack unterhalb ist für alle Applikationen gleich.\\
 
@@ -149,19 +149,19 @@
 
 In Kapitel \ref{ss:grundlagen:sap} wurde auf die Marke SAP Leonardo verwiesen, welche unter anderem eine \ac{iot} Schnittstelle liefert. Ein Überblick über diese Schnittstelle findet sich in Abbildung \ref{FIG:Interface}. Aus dieser geht hervor, dass sich die gesamte Anwendung in der SAP Cloud befindet.\\
 
-\noindent Den Kern bildet hier die Unterkategorie von SAP Leonardo mit dem Beinamen \ac{iot}. Dieser Teil ist mit einer \ac{gui} buchbar, die neben einer Administrationsoberfläche, auf die in Kapitel \ref{ss:interface:admin} näher eingegangen wird, Services für Datenverwaltung und IT Sicherheit liefert. Zusätzlich bietet SAP eine voll Funktionsfähige Web \ac{ide}.\\
+\noindent Den Kern bildet hier die Unterkategorie von SAP Leonardo mit dem Beinamen \ac{iot}. Dieser Teil ist mit einer \ac{gui} buchbar, die neben einer Administrationsoberfläche, auf die in Kapitel \ref{ss:interface:admin} näher eingegangen wird, Services für Datenverwaltung und IT Sicherheit liefert. Zusätzlich bietet SAP eine voll Funktionsfähige Web integrierte Entwicklungsumgebung.\\
 
 \noindent Die Datenverwaltung in SAP Leonardo \ac{iot} soll den Nutzer dabei unterstützen relevante Daten die von etwaigen \ac{iot} Geräten empfangen wurden gewinnbringend zu verwerten. Hierfür können Regeln und Aktionen definiert werden, wie die Daten behandelt werden sollen. Da auf verschieden Daten unterschiedlich schnell zugegriffen werden muss, bietet SAP auch hierfür verschieden Speicherbereiche an, welche sich entsprechend im Preis unterscheiden \cite[Seite 173]{Holtschulte20:IOS}. Wenn ein sehr schneller Speicherzugriff notwendig ist, dann liefert die Hot Storage Funktion die benötigte Geschwindigkeit. Allerdings ist diese auch am teuersten. Weitere Speicherzugriffsvarianten die das SAP \ac{iot} Paket enthält sind der Warm und Cold Storage. Bei der Warm Storage Variante sind schnelle aber nicht so häufige Speicherzugriffe notwendig. Die Cold Storage Variante hingegen speichert Daten die über lange Zeit nicht mehr benötigt werden. Entsprechend sind langsame Speichermedien vollkommen ausreichend. Diese Art des Speicherzugriffs nennt man auch Mutli Temperature Datenverwaltung \cite[Seite 118f]{Holtschulte20:IOS}. Falls eine langfristigere Speicherung oder eine Weiterverwendung der Daten benötigt werden, können SAP HANA oder Big Data Services gebucht werden, welche dies übernehmen \cite[Seite 173]{Holtschulte20:IOS}.\\    
 
 \noindent Um die Sicherheit der Anwendung zu gewährleisten bietet die SAP Cloud Platform diverse Services zur Authentifizierung. In der Regel weißt man dabei seine Identität über eine Drittanbieter Software aus. Darüber hinaus liefert die Anwendung SAP Cloud Platform Cockpit die Möglichkeit Nutzern verschiedene Rollen zuzuweisen \cite[Seite 176ff]{Holtschulte20:IOS}.\\
 
-\noindent Um die SAP Cloud mit einem Backend System zu verbinden wird der \ac{cpi}  Service verwendet. Dabei ist zu beachten, das auch nicht SAP Systeme über diesen Service mit der Cloud kommunizieren können. Der Service ist mit dem SAP Cloud Paket buchbar \cite[Seite 146]{Holtschulte20:IOS}.\\
+\noindent Um die SAP Cloud mit einem Backend System zu verbinden wird der SAP Cloud Platform Integration Service verwendet. Dabei ist zu beachten, das auch nicht SAP Systeme über diesen Service mit der Cloud kommunizieren können. Der Service ist mit dem SAP Cloud Paket buchbar \cite[Seite 146]{Holtschulte20:IOS}.\\
 
 \noindent Um ein \ac{iot} Gerät mit SAP Leonardo \ac{iot} anzubinden gibt es zwei Möglichkeiten. Zum einen den Service SAP Cloud Platform \ac{iot} und zum anderen die Verwendung sogenannter Edge Services. Erster ist die Standardlösung welche von SAP angeboten wird. Über diesen Service lassen sich angeschlossene Geräte unter dem Reiter Device Management verwalten und neue hinzufügen. Im Reiter Component Management wiederum kann der Gateway konfiguriert werden, über den die Kommunikation mit dem jeweiligen Gerät abgehandelt wird \cite[Seite 200f]{Holtschulte20:IOS}. Hierbei gibt es folgende drei mögliche Gateways \cite[Seite 117]{Holtschulte20:IOS}:
 \begin{itemize}
-	\item{\ac{opc}}
+	\item{Open Platform Communications (OPC)}
 	\item{\ac{mqtt}}
-	\item{\ac{http}}
+	\item{Hypertext Transfer Protocol (HTTP)}
 \end{itemize}
 Über den Reiter Processing kann anschließend definiert werden, auf welche Weiße ankommende Daten von \ac{iot} Geräten verarbeitet werden. Zusätzlich können Daten sogar für einen Zeitraum X aufbewahrt werden \cite[Seite 205]{Holtschulte20:IOS}.\\
 
