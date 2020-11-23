@@ -1,6 +1,8 @@
 \section{Einleitung}
 \label{s:intro}
 
+
+
 \section{Vorgestellte Technologien}
 \label{s:grundlagen}
 
@@ -242,9 +244,16 @@ Aus Abbildung \ref{FIG:mqtt} geht hervor, dass sämtliche Kommunikation zwischen
 
 \noindent ZigBee ist somit ein Protokoll, welches eine gute alternative zu \ac{ble} bietet. Allerdings muss die geringe Datenrate des Protokolls in den Auswahlprozess eingebunden werden. ZigBee eignet sich Hervorragend um knappe Befehle an verteilte Systeme zu übertragen. Sollte jedoch eine aufwändigere Kommunikation benötigt werden, stößt ZigBee schnell an seine Grenzen. Somit ist \ac{ble} das funktional Umfangreichere Protokoll, muss sich allerdings im Steuerungsbereich von einfachen Geräten geschlagen geben.\\
 
-\section{Fazit}
+\section{Zusammenfassung}
 \label{s:fazit}
 
+\noindent Seit SAP im Jahr 2018 die Firmenstrategie um das "`intelligente Unternehmen"' erweitert hat, bieten sich Firmen, welche SAP im Einsatz haben, eine Vielzahl neuer Möglichkeiten. Besonders Firmen in den Bereichen Logistik und Fertigung erhalten seit dem die Möglichkeit elektrische Kleingeräte aus dem \ac{iot} Sektor zur Überwachung oder Automatisierung in die Unternehmensprozesse zu integrieren. Das Unternehmen SAP hat mit der Integration einer \ac{iot} Schnittstelle auf den stetig steigenden Einsatz solcher Geräte in der Industrie reagiert.\\
+
+\noindent Das \ac{iot} Kommunikationsprotokoll \ac{ble} hat sich seit der Frühphase der \ac{iot} Protokolle zu einem soliden Allrounder entwickelt, welcher nicht nur über die klassischen Bluetooth Funktionen der festen Verbindung und dessen Datenaustausch verfügt. Ferner kann ein \ac{ble} Gerät auch als Broadcaster definiert werden und ermöglicht somit Funktionen wie Indoor Positionsbestimmung. Doch auch der Datenaustausch mit \ac{ble} lässt einen soliden Durchsatz zu, welcher in der Lage ist Audiodateien wiederzugeben. Dabei sind Geräte, welche \ac{ble} verwenden nicht an Infrastruktur gebunden, sondern spannen ihr eigenes Netzwerk auf.\\ 
+  
+\noindent Die Schnittstelle, welche SAP zur Anbindung von \ac{iot} Geräten bereitstellt läuft unter dem Namen SAP Leonardo IoT in der SAP Cloud. Dies erfordert einen Gateway für die \ac{iot} Geräte um deren Nachrichten in ein IP Format zu übertragen und in die Cloud zu senden. SAP bietet zu diesem Zweck zwei Möglichkeiten des Anschlusses. Zum einen die SAP Plattform IoT, welche selbst in der Cloud liegt und die Anbindung über eine Reihe von Gateways wie beispielsweise \ac{mqtt} unterstützt. Diese Lösung bietet sich bei \ac{iot} Geräten an, welche keine zeitrelevanten Daten versenden. Sollte das der Fall sein kann ein Edge Service auf dem \ac{iot} Gerät installiert werden, welche direkt auf Ereignisse reagiert und erst in nächster Instanz Daten an die Cloud sendet. Ein \ac{ble} Gerät lässt sich mit Hilfe des \ac{mqtt} Gateways, welchen beide Optionen anbieten, an SAP anbinden.\\    
+  
+\noindent Ein \ac{iot} Gerät kann zu verschiedensten Zwecken in den unterschiedlichsten Bereichen eingesetzt werden. Dabei ist eine dauerhafte Stromquelle nicht immer verfügbar. Daraus resultierend sollte ein Protokoll einen möglichst geringen Stromverbrauch aufweisen. Dennoch sollte es je nach Anwendungsfall in der Lage sein auch größere Datenmengen zu verarbeiten. \ac{ble} vereint diese Kriterien. Dabei benötigt es beispielsweise bedeutend weniger Energie als WLAN und läuft darüber hinaus in einem Ad-Hoc Modus. Ein System, welches jedoch über einen langen Zeitraum ohne Stromquelle betrieben werden muss sollte dennoch auf Protokolle wie ZigBee zurückgreifen.\\      
   
 %%% Local Variables: 
 %%% mode: latex
