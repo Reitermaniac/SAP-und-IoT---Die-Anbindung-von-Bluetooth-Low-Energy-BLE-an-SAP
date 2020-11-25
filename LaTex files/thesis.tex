@@ -1,4 +1,4 @@
-  \documentclass[twoside=true, %  doppelseitiger Druck
+  \documentclass[twoside=false, %  doppelseitiger Druck
     DIV=15
     ,% 11 DIV Faktor für Satzspiegelberechnung - muss bei anderen Schriftgrößen als 11pt angepasst werden , sie Doku zu KOMA Script
     BCOR=15mm, % Bindekorrektur
@@ -36,8 +36,6 @@
 \usepackage{url}
 \usepackage{graphicx}
 
-\usepackage{lipsum} % kann weg, nur zur Generierung von etwas Text im Beispieldokument
-
 
 \selectlanguage{ngerman}
 
@@ -69,15 +67,17 @@ Fakultät für Informatik}
 \date{WS 2020/21}
 
 \maketitle
+\thispagestyle{empty}
 
 \begin{abstract}
-In dieser Arbeit werden die verschiedenen Anbindungsmöglichkeiten des Internet of Things (IOT) Kommunikationsprotokolls Bluetooth Low Energy (BLE) an SAP Softwarelösungen erläutert. Dabei werden zunächst die Begriffe IOT und Industrie 4.0 im SAP Umfeld erläutert. Anschließend wird BLE im Hinblick auf Funktionsweise und Anwendungsmöglichkeiten betrachtet.
-Der Schwerpunkt der Arbeit liegt in der Erläuterung der Schnittstellenlösung welche SAP für IOT Geräte bereitstellt. Um festzustellen, ob BLE für den eigenen Anwendungsfall in Verbindung mit SAP geeignet ist, wird zusätzlich ein Überblick über konkurrierende Protokolle gegeben und deren Einsatzmöglichkeiten diskutiert.
+In dieser Arbeit werden die verschiedenen Anbindungsmöglichkeiten des Internet of Things (IoT) Kommunikationsprotokolls Bluetooth Low Energy (BLE) an SAP Softwarelösungen erläutert. Dabei werden zunächst die Begriffe IoT und Industrie 4.0 im SAP Umfeld erläutert. Anschließend wird BLE im Hinblick auf Funktionsweise und Anwendungsmöglichkeiten betrachtet.
+Der Schwerpunkt der Arbeit liegt in der Erläuterung der Schnittstellenlösung welche SAP für IoT Geräte bereitstellt. Um festzustellen, ob BLE für den eigenen Anwendungsfall in Verbindung mit SAP geeignet ist, wird zusätzlich ein Überblick über konkurrierende Protokolle gegeben und deren Einsatzmöglichkeiten diskutiert.
 \end{abstract}
 
 \newpage
 
 \tableofcontents
+\pagenumbering{Roman}
 
 \newpage
 
@@ -92,7 +92,7 @@ Der Schwerpunkt der Arbeit liegt in der Erläuterung der Schnittstellenlösung w
 	\acro{gap}[GAP]{Generic Access Profile}
 	\acro{gatt}[GATT]{Generic Attribute Profile}
 	\acro{gui}[GUI]{Grafische Benutzeroberfläche}
-	\acro{iot}[IOT]{Internet of Things}
+	\acro{iot}[IoT]{Internet of Things}
 	\acro{m2m}[M2M]{Maschine zu Maschine Verbindung}
 	\acro{mqtt}[MQTT]{Message Queuing Telemetry Transport}
 	\acro{rfid}[RFID]{Radio Frequency Identification}
@@ -101,12 +101,13 @@ Der Schwerpunkt der Arbeit liegt in der Erläuterung der Schnittstellenlösung w
 
 %\pagestyle{scrheadings}
 
+\newpage
 
 \addtokomafont{caption}{\small}
 
-
+\pagestyle{headings}
+\pagenumbering{arabic}
 \include{chapters}
-
 
 
 %\appendix
