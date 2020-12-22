@@ -7,7 +7,7 @@
     pagesize,%         write pagesize to DVI or PDF
     fontsize=12pt,%             use this font size
     paper=a4,%          use ISO A4
-%    bibliography=totoc,%         write bibliography-chapter to table of contents
+    bibliography=totoc,%         write bibliography-chapter to table of contents
     numbers=noenddot
   ]{scrartcl}
 
@@ -115,7 +115,7 @@ Der Schwerpunkt der Arbeit liegt in der Erläuterung der Schnittstellenlösung w
 %\include{append}
 \pagenumbering{Roman}
 \setcounter{page}{4}
-\addcontentsline{toc}{section}{Literatur}
+\renewcommand\refname{Literaturverzeichnis}
 \bibliographystyle{natger}
 \bibliography{thesis}
 
